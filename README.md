@@ -71,7 +71,7 @@ firebaseReference.addValueEventListener(new ValueEventListener() {
 
 Need help? You can ask a question on stackoverflow with the tag "kemai" and I'll reach to you as soon as possible or submit an issue if you encountered one.
 
-### Licence
+### License
 
 ```
 MIT License
