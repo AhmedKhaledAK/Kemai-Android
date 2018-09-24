@@ -35,7 +35,7 @@ public class KListReader {
         return TextUtils.join(", ", list);
     }
 
-    public String mapToJSONString(Map<String, Object> map, String... keys) throws JsonProcessingException {
+    public String convertMapToJSONString(Map<String, Object> map, String... keys) throws JsonProcessingException {
         for (String key : keys) {
             editInMap(map, key);
         }
