@@ -21,17 +21,14 @@ allprojects {
 ```
 dependencies {
     ...
-    implementation 'com.github.AhmedKhaledAK:Kemai-Android:v1.0-beta'
+    implementation 'com.github.AhmedKhaledAK:Kemai-Android:v1.0-beta.1'
 }
 ```
 
 ### Usage
-> Please Note that you will need Gson and Jackson libraries in order to work with this version Kemai: 
+> Please Note that you will need Gson library in order to work with this version of Kemai: 
 ```
 implementation 'com.google.code.gson:gson:2.8.5'
-implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.5'
-implementation 'com.fasterxml.jackson.core:jackson-core:2.8.5'
-implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.5'
 ```
 * Read data from a node in Firebase:
 ```java
@@ -45,16 +42,14 @@ firebaseReference.addValueEventListener(new ValueEventListener() {
 
                     //Kemai Library:
                     KListReader reader = new KListReader();
-                    reader.editInMap(map, "fooList1"); // your map that holds the DataSnapshot and the key of the expected list.
-                    reader.editInMap(map, "fooList2");
-                    // End of Library
-                    
+                  
                     String jsonResponse = null;
                     try {
-                      jsonResponse = new ObjectMapper().writeValueAsString(map);
+                      jsonResponse = reader.convertMapToJSONString(map, "fooList1", "fooList2");
                     } catch (JsonProcessingException e) {
                       e.printStackTrace();
                     }
+                    //End of Library
                     Gson gson = new Gson();
                     Foo foo = gson.fromJson(jsonResponse, Foo.class);
                 }
@@ -65,7 +60,7 @@ firebaseReference.addValueEventListener(new ValueEventListener() {
             }
         });
 ```
-> Note that we did not need to set the map again since we did not change its reference.
+> Note that we did not need to set the map again since we did not change its reference. Also you can pass as many lists as you like as parameters to convertMapToJSONString() method.
 
 ### Help
 
