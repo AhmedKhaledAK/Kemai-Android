@@ -2,6 +2,9 @@ package akopensource.kemai;
 
 import android.text.TextUtils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +20,7 @@ public class KListReader {
         return map;
     }
 
-    public void editInMap(Map<String, Object> map, String key){
+    private void editInMap(Map<String, Object> map, String key){
         List<Object> list = Collections.singletonList(map.get(key));
         String listString = convertListToString(list);
 
@@ -30,5 +33,12 @@ public class KListReader {
 
     private String convertListToString(List<Object> list) {
         return TextUtils.join(", ", list);
+    }
+
+    public String mapToJSONString(Map<String, Object> map, String... keys) throws JsonProcessingException {
+        for (String key : keys) {
+            editInMap(map, key);
+        }
+        return new ObjectMapper().writeValueAsString(this.map);
     }
 }
