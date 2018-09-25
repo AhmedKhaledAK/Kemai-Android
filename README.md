@@ -1,5 +1,5 @@
 # Kemai-Android
-Read Lists from Firebase in an effective and easy way.
+Read Lists from Firebase in an easy way.
 
 Firebase doesn't deal with lists / arrays, but sometimes we need to read simple lists to use it in our app. This Library enables you to read Lists from any JSON generators that do not support lists / arrays.
 
@@ -61,10 +61,6 @@ firebaseReference.addValueEventListener(new ValueEventListener() {
         });
 ```
 > Note that we did not need to set the map again since we did not change its reference. Also you can pass as many lists as you like as parameters to convertMapToJSONString() method.
-
-### Help
-
-Need help? You can ask a question on stackoverflow with the tag "kemai" and I'll reach to you as soon as possible or submit an issue if you encountered one.
 
 ### License
 
